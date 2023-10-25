@@ -1,5 +1,6 @@
 const inputs = document.querySelectorAll("input");//0号 1邮箱 2密码 3确认密码
 const signUp =document.querySelector(".s");//按钮
+const box=document.querySelector("#box1");
 
 let pw1=inputs[2].value;
 let pw2=inputs[3].value;
@@ -7,6 +8,7 @@ let pw2=inputs[3].value;
 let i,t=['','','','',];//输入数据
 let setI1=localStorage.getItem('user-id'),setI2=localStorage.getItem('pw');
 let midu=setI1+','+t[0],midp=setI1+','+t[2];
+let timer;
 
 localStorage.setItem('user-id',midu);
 localStorage.setItem('pw',midp);
@@ -45,11 +47,26 @@ function sU(){
         midp=setI2+','+t[2];
         localStorage.setItem('user-id',midu);
         localStorage.setItem('pw',midp);
+        an1();
         alert("注册成功！");
+        timer=setInterval(function(){
+        location.href="./log-in.html";
+    },10);
     }
 }
 
-
-
-//const password=document.querySelector();
-//if(.leng)
+function an1(){
+    m=1.00;
+    timer=setInterval(function(){
+        box.style.opacity=m+"";
+        box.style.position="relative";
+        if(box.style.opacity==="0.00"){
+            clearInterval;
+            timer=null;
+                //alert("");
+        }
+        else{
+            m=m-0.05;
+        }
+    },50);
+}
